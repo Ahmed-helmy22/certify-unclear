@@ -32,5 +32,8 @@ RUN chown -R node:node /usr/src/app
 # Switch to the non-root user
 USER node
 
+# Expose the port
+EXPOSE 5001 
+
 # Run npm commands
 CMD npm i && cd client && npm i && npm run build
