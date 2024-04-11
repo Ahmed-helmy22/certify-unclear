@@ -4,7 +4,7 @@ FROM ghcr.io/puppeteer/puppeteer:22.6.4
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable \
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     NODE_ENV=production \
-    PORT=3000 \
+    PORT=3001 \
     JWT_SECRET=mysecret \
     TIME_EXPIRED_IN=12 \
     MONOGDB=mongodb://127.0.0.1:27017/certificate \
@@ -31,6 +31,7 @@ RUN chown -R node:node /usr/src/app
 USER node
 
 # Expose the port
+EXPOSE 3001
 EXPOSE 3000 
 
 # Run npm commands

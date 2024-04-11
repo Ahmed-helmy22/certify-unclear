@@ -10,24 +10,24 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       '/api': {
-        target: 'http://0.0.0.0:3000/api',
+        target: 'http://0.0.0.0:3001/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/badge': {
-        target: 'http://0.0.0.0:3000', // Your backend server URL
+        target: 'http://0.0.0.0:3001', // Your backend server URL
         changeOrigin: true,
       },
       '/provider': {
-        target: 'http://0.0.0.0:5001', // Your backend server URL
+        target: 'http://0.0.0.0:3001', // Your backend server URL
         changeOrigin: true,
       },
       '/examiner': {
-        target: 'http://0.0.0.0:3000', // Your backend server URL
+        target: 'http://0.0.0.0:3001', // Your backend server URL
         changeOrigin: true,
       },
       '/candidate': {
-        target: 'http://0.0.0.0:3000', // Your backend server URL
+        target: 'http://0.0.0.0:3001', // Your backend server URL
         changeOrigin: true,
       }
     },
