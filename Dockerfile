@@ -1,5 +1,6 @@
 FROM ghcr.io/puppeteer/puppeteer:22.6.4
 
+# Set environment variables
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable \
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     NODE_ENV=production \
@@ -12,6 +13,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable \
     CLOUD_API_KEY=426975377999731 \
     CLOUD_API_SECRET=g5yCVCoOHEIjEHJ6aZSXaXd3Ilw
 
+# Set working directory
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
@@ -20,11 +22,15 @@ COPY package*.json ./
 # Install dependencies
 RUN npm ci
 
-# Switch to the non-root user
-USER node
-
 # Copy the rest of the application files
 COPY . .
+
+# Adjust ownership and permissions
+USER root
+RUN chown -R node:node /usr/src/app
+
+# Switch to the non-root user
+USER node
 
 # Run npm commands
 CMD npm i && cd client && npm i && npm run build
