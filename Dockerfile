@@ -14,9 +14,21 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable \
 
 WORKDIR /usr/src/app
 
-COPY    package*.json ./
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
+# Adjust permissions
+USER root
+RUN chmod -R 755 /usr/src/app
+
+# Install dependencies
 RUN npm ci
 
+# Switch back to non-root user
+USER node
+
+# Copy the rest of the application files
 COPY . .
-CMD npm i && cd client && npm i && npm run build
+
+# Run npm commands with elevated privileges
+CMD sudo npm i && cd client && sudo npm i && sudo npm run build
