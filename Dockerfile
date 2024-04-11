@@ -17,18 +17,14 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Adjust permissions
-USER root
-RUN chmod -R 755 /usr/src/app
-
 # Install dependencies
 RUN npm ci
 
-# Switch back to non-root user
+# Switch to the non-root user
 USER node
 
 # Copy the rest of the application files
 COPY . .
 
-# Run npm commands with elevated privileges
-CMD sudo npm i && cd client && sudo npm i && sudo npm run build
+# Run npm commands
+CMD npm i && cd client && npm i && npm run build
