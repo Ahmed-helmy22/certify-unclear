@@ -19,4 +19,4 @@ COPY    package*.json ./
 RUN npm ci
 
 COPY . .
-CMD ["npm", "i", "&&", "cd", "client", "&&", "npm", "i", "&&", "npm", "run", "build"]   
+CMD npm i && cd client && npm i && npm run build
