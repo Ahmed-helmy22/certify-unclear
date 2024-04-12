@@ -35,4 +35,4 @@ EXPOSE 3001
 EXPOSE 3000 
 
 # Run npm commands
-CMD npm i && cd client && npm i && npm run build
+CMD  npm i && npm run server
