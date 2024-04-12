@@ -43,7 +43,7 @@ app.use(xss());
 app.use(express.static('public'));
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-app.use(express.static(path.resolve(__dirname, './client/dist')));
+//app.use(express.static(path.resolve(__dirname, './client/dist')));
 
 app.use(express.urlencoded({ extended: false }));
 
