@@ -64,9 +64,9 @@ app.use('/api/v1/auth',authRouter);
 app.use('/api/v1/externalBadge',externalBadgeRouter);
 
 
-app.get('*', (req, res) => {
-   res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//    res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
+// });
 
 
 app.all('*', (req, res, next) => {
