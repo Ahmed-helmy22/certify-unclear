@@ -31,8 +31,7 @@ RUN chown -R node:node /usr/src/app
 USER node
 
 # Expose the port
-EXPOSE 3001
-EXPOSE 3000 
+EXPOSE 3000
 
 # Run npm commands
 CMD  npm i && npm run server
